@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Joguinho legal</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <style>
+        #sortable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 40%;
+        }
+        #sortable li {
+            margin: 0 3px 3px 3px;
+            padding: 0.4em;
+            padding-left: 1.5em;
+            cursor: move;
+            font-size: 1.4em;
+            height: 18px;
+            background: rgb(36, 39, 182);
+        }
+        #sortable li span {
+            position: absolute;
+            margin-left: -1.3em;
+        }
+      </style>
+</head>
+<body>
+    <h1>Clique e arraste para posição correta</h1>
+    <ul id="sortable">
+        <li class="ui-state-default" id="1"><span class="ui-icon ui-icon-arrowthick-3-n-s"></span>O</li>
+        <li class="ui-state-default" id="2"><span class="ui-icon ui-icon-arrowthick-1-n-s"></span>L</li>
+        <li class="ui-state-default" id="3"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Á</li>
+    </ul>
+
+    <button id="btn">clique e veja se acertou</button>
+    <div class="show"></div>
+</body>
+</html>
+   
+<script>
+    $(document).ready(function (e) {
+        $("#sortable").sortable();
+        $("#sortable").disableSelection();
+
+        $("#btn").on("click", function () {
+            var x = "";
+            $("#sortable li").each(function (index, element) {
+                x = x + $(this).text() + " , ";
+            });
+            $(".show").text('resposta correta: OLÁ');
+        });
+    });
+
+
+</script>
